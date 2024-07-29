@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filling Station Management System - Login</title>
+    <title>Filling Station Management - Input Data</title>
     <style>
         body {
-            background-color: #f0f0f5;
+            background-color: #f8f9fa;
             font-family: Arial, sans-serif;
             color: #333;
             margin: 0;
@@ -18,19 +18,17 @@
         }
 
         .container {
-            text-align: center;
-        }
-
-        .login-box {
             background-color: #fff;
-            padding: 30px;
+            padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            text-align: center;
+            width: 400px;
         }
 
-        h1, h2 {
+        h1 {
             color: #333;
+            margin-bottom: 20px;
         }
 
         .textbox {
@@ -38,56 +36,59 @@
         }
 
         .textbox input {
-            width: 100%;
+            width: calc(100% - 20px);
             padding: 10px;
-            margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 16px;
         }
 
         .btn {
             width: 100%;
             padding: 10px;
-            background-color: #5cb85c;
+            background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
 
         .btn:hover {
-            background-color: #4cae4c;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Filling Station Management System</h1>
-        <div class="login-box">
-            <h2>Admin Login</h2>
-            <form action="dashboard.html" method="POST" onsubmit="return validateLogin()">
-                <div class="textbox">
-                    <input type="text" placeholder="Username" id="username" required>
-                </div>
-                <div class="textbox">
-                    <input type="password" placeholder="Password" id="password" required>
-                </div>
-                <input type="submit" class="btn" value="Login">
-            </form>
-        </div>
+        <h1>Enter Fuel Data</h1>
+        <form action="process_data.html" method="POST" onsubmit="return validateData()">
+            <div class="textbox">
+                <input type="number" placeholder="Opening Litres" id="openingLitres" required>
+            </div>
+            <div class="textbox">
+                <input type="number" placeholder="Closing Litres" id="closingLitres" required>
+            </div>
+            <input type="submit" class="btn" value="Submit">
+        </form>
     </div>
 
     <script>
-        function validateLogin() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        function validateData() {
+            const openingLitres = document.getElementById('openingLitres').value;
+            const closingLitres = document.getElementById('closingLitres').value;
 
-            if (username === 'mullah007' && password === '1776') {
-                return true;
-            } else {
-                alert('Invalid credentials. Please try again.');
+            if (openingLitres < 0 || closingLitres < 0) {
+                alert('Litres cannot be negative. Please enter valid numbers.');
                 return false;
             }
+
+            if (closingLitres < openingLitres) {
+                alert('Closing litres cannot be less than opening litres.');
+                return false;
+            }
+
+            return true;
         }
     </script>
 </body>
