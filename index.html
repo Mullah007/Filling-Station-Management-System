@@ -49,13 +49,10 @@
             margin-bottom: 30px;
         }
 
-        .fuel-type {
-            margin-bottom: 20px;
-        }
-
         .row {
             display: flex;
             justify-content: space-between;
+            margin-bottom: 20px;
         }
 
         .column {
@@ -92,132 +89,235 @@
     <div class="container">
         <h1>Fuel Data Entry</h1>
 
-        <div class="row">
-            <div class="column">
-                <div class="fuel-type">
-                    <h2>PETROL</h2>
-                    <div class="fuel-section" id="petrol-pumps">
-                        <div>
-                            <h3>Pump 1</h3>
-                            <div class="textbox">
-                                <label for="petrolA1">A</label>
-                                <input type="number" id="petrolA1" placeholder="Enter litres" oninput="calculateTotal('petrol', 1)">
+        <div class="row" id="opening-closing">
+            <div class="textbox">
+                <label for="openingLitres">Opening Litres</label>
+                <input type="number" id="openingLitres" placeholder="Enter opening litres" required>
+            </div>
+            <div class="textbox">
+                <label for="closingLitres">Closing Litres</label>
+                <input type="number" id="closingLitres" placeholder="Enter closing litres" required>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="column">
+                    <div class="fuel-type">
+                        <h2>PETROL</h2>
+                        <div class="fuel-section" id="petrol-pumps">
+                            <!-- Pumps for Petrol -->
+                            <div>
+                                <h3>Pump 1</h3>
+                                <div class="textbox">
+                                    <label for="petrolA1">A</label>
+                                    <input type="number" id="petrolA1" placeholder="Enter litres" oninput="calculateTotal('petrol', 1)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="petrolB1">B</label>
+                                    <input type="number" id="petrolB1" placeholder="Enter litres" oninput="calculateTotal('petrol', 1)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="petrolTotal1">TOTAL</label>
+                                    <input type="number" id="petrolTotal1" placeholder="Total litres" readonly>
+                                </div>
                             </div>
-                            <div class="textbox">
-                                <label for="petrolB1">B</label>
-                                <input type="number" id="petrolB1" placeholder="Enter litres" oninput="calculateTotal('petrol', 1)">
+                            <div>
+                                <h3>Pump 2</h3>
+                                <div class="textbox">
+                                    <label for="petrolA2">A</label>
+                                    <input type="number" id="petrolA2" placeholder="Enter litres" oninput="calculateTotal('petrol', 2)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="petrolB2">B</label>
+                                    <input type="number" id="petrolB2" placeholder="Enter litres" oninput="calculateTotal('petrol', 2)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="petrolTotal2">TOTAL</label>
+                                    <input type="number" id="petrolTotal2" placeholder="Total litres" readonly>
+                                </div>
                             </div>
-                            <div class="textbox">
-                                <label for="petrolTotal1">TOTAL</label>
-                                <input type="number" id="petrolTotal1" placeholder="Total litres" readonly>
+                            <div>
+                                <h3>Pump 3</h3>
+                                <div class="textbox">
+                                    <label for="petrolA3">A</label>
+                                    <input type="number" id="petrolA3" placeholder="Enter litres" oninput="calculateTotal('petrol', 3)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="petrolB3">B</label>
+                                    <input type="number" id="petrolB3" placeholder="Enter litres" oninput="calculateTotal('petrol', 3)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="petrolTotal3">TOTAL</label>
+                                    <input type="number" id="petrolTotal3" placeholder="Total litres" readonly>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>Pump 4</h3>
+                                <div class="textbox">
+                                    <label for="petrolA4">A</label>
+                                    <input type="number" id="petrolA4" placeholder="Enter litres" oninput="calculateTotal('petrol', 4)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="petrolB4">B</label>
+                                    <input type="number" id="petrolB4" placeholder="Enter litres" oninput="calculateTotal('petrol', 4)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="petrolTotal4">TOTAL</label>
+                                    <input type="number" id="petrolTotal4" placeholder="Total litres" readonly>
+                                </div>
                             </div>
                         </div>
-                        <!-- Repeat for Pumps 2, 3, and 4 -->
-                        <div>
-                            <h3>Pump 4</h3>
-                            <div class="textbox">
-                                <label for="petrolA4">A</label>
-                                <input type="number" id="petrolA4" placeholder="Enter litres" oninput="calculateTotal('petrol', 4)">
-                            </div>
-                            <div class="textbox">
-                                <label for="petrolB4">B</label>
-                                <input type="number" id="petrolB4" placeholder="Enter litres" oninput="calculateTotal('petrol', 4)">
-                            </div>
-                            <div class="textbox">
-                                <label for="petrolTotal4">TOTAL</label>
-                                <input type="number" id="petrolTotal4" placeholder="Total litres" readonly>
-                            </div>
+                        <div class="total-box">
+                            <h3>Total Petrol</h3>
+                            <input type="number" id="totalPetrol" placeholder="Total Petrol Sold" readonly>
                         </div>
-                    </div>
-                    <div class="total-box">
-                        <h3>Total Petrol</h3>
-                        <input type="number" id="totalPetrol" placeholder="Total Petrol Sold" readonly>
                     </div>
                 </div>
-            </div>
 
-            <div class="column">
-                <div class="fuel-type">
-                    <h2>DIESEL</h2>
-                    <div class="fuel-section" id="diesel-pumps">
-                        <div>
-                            <h3>Pump 1</h3>
-                            <div class="textbox">
-                                <label for="dieselA1">A</label>
-                                <input type="number" id="dieselA1" placeholder="Enter litres" oninput="calculateTotal('diesel', 1)">
+                <div class="column">
+                    <div class="fuel-type">
+                        <h2>DIESEL</h2>
+                        <div class="fuel-section" id="diesel-pumps">
+                            <!-- Pumps for Diesel -->
+                            <div>
+                                <h3>Pump 1</h3>
+                                <div class="textbox">
+                                    <label for="dieselA1">A</label>
+                                    <input type="number" id="dieselA1" placeholder="Enter litres" oninput="calculateTotal('diesel', 1)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="dieselB1">B</label>
+                                    <input type="number" id="dieselB1" placeholder="Enter litres" oninput="calculateTotal('diesel', 1)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="dieselTotal1">TOTAL</label>
+                                    <input type="number" id="dieselTotal1" placeholder="Total litres" readonly>
+                                </div>
                             </div>
-                            <div class="textbox">
-                                <label for="dieselB1">B</label>
-                                <input type="number" id="dieselB1" placeholder="Enter litres" oninput="calculateTotal('diesel', 1)">
+                            <div>
+                                <h3>Pump 2</h3>
+                                <div class="textbox">
+                                    <label for="dieselA2">A</label>
+                                    <input type="number" id="dieselA2" placeholder="Enter litres" oninput="calculateTotal('diesel', 2)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="dieselB2">B</label>
+                                    <input type="number" id="dieselB2" placeholder="Enter litres" oninput="calculateTotal('diesel', 2)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="dieselTotal2">TOTAL</label>
+                                    <input type="number" id="dieselTotal2" placeholder="Total litres" readonly>
+                                </div>
                             </div>
-                            <div class="textbox">
-                                <label for="dieselTotal1">TOTAL</label>
-                                <input type="number" id="dieselTotal1" placeholder="Total litres" readonly>
+                            <div>
+                                <h3>Pump 3</h3>
+                                <div class="textbox">
+                                    <label for="dieselA3">A</label>
+                                    <input type="number" id="dieselA3" placeholder="Enter litres" oninput="calculateTotal('diesel', 3)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="dieselB3">B</label>
+                                    <input type="number" id="dieselB3" placeholder="Enter litres" oninput="calculateTotal('diesel', 3)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="dieselTotal3">TOTAL</label>
+                                    <input type="number" id="dieselTotal3" placeholder="Total litres" readonly>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>Pump 4</h3>
+                                <div class="textbox">
+                                    <label for="dieselA4">A</label>
+                                    <input type="number" id="dieselA4" placeholder="Enter litres" oninput="calculateTotal('diesel', 4)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="dieselB4">B</label>
+                                    <input type="number" id="dieselB4" placeholder="Enter litres" oninput="calculateTotal('diesel', 4)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="dieselTotal4">TOTAL</label>
+                                    <input type="number" id="dieselTotal4" placeholder="Total litres" readonly>
+                                </div>
                             </div>
                         </div>
-                        <!-- Repeat for Pumps 2, 3, and 4 -->
-                        <div>
-                            <h3>Pump 4</h3>
-                            <div class="textbox">
-                                <label for="dieselA4">A</label>
-                                <input type="number" id="dieselA4" placeholder="Enter litres" oninput="calculateTotal('diesel', 4)">
-                            </div>
-                            <div class="textbox">
-                                <label for="dieselB4">B</label>
-                                <input type="number" id="dieselB4" placeholder="Enter litres" oninput="calculateTotal('diesel', 4)">
-                            </div>
-                            <div class="textbox">
-                                <label for="dieselTotal4">TOTAL</label>
-                                <input type="number" id="dieselTotal4" placeholder="Total litres" readonly>
-                            </div>
+                        <div class="total-box">
+                            <h3>Total Diesel</h3>
+                            <input type="number" id="totalDiesel" placeholder="Total Diesel Sold" readonly>
                         </div>
-                    </div>
-                    <div class="total-box">
-                        <h3>Total Diesel</h3>
-                        <input type="number" id="totalDiesel" placeholder="Total Diesel Sold" readonly>
                     </div>
                 </div>
-            </div>
 
-            <div class="column">
-                <div class="fuel-type">
-                    <h2>KEROSENE</h2>
-                    <div class="fuel-section" id="kerosene-pumps">
-                        <div>
-                            <h3>Pump 1</h3>
-                            <div class="textbox">
-                                <label for="keroseneA1">A</label>
-                                <input type="number" id="keroseneA1" placeholder="Enter litres" oninput="calculateTotal('kerosene', 1)">
+                <div class="column">
+                    <div class="fuel-type">
+                        <h2>KEROSENE</h2>
+                        <div class="fuel-section" id="kerosene-pumps">
+                            <!-- Pumps for Kerosene -->
+                            <div>
+                                <h3>Pump 1</h3>
+                                <div class="textbox">
+                                    <label for="keroseneA1">A</label>
+                                    <input type="number" id="keroseneA1" placeholder="Enter litres" oninput="calculateTotal('kerosene', 1)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="keroseneB1">B</label>
+                                    <input type="number" id="keroseneB1" placeholder="Enter litres" oninput="calculateTotal('kerosene', 1)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="keroseneTotal1">TOTAL</label>
+                                    <input type="number" id="keroseneTotal1" placeholder="Total litres" readonly>
+                                </div>
                             </div>
-                            <div class="textbox">
-                                <label for="keroseneB1">B</label>
-                                <input type="number" id="keroseneB1" placeholder="Enter litres" oninput="calculateTotal('kerosene', 1)">
+                            <div>
+                                <h3>Pump 2</h3>
+                                <div class="textbox">
+                                    <label for="keroseneA2">A</label>
+                                    <input type="number" id="keroseneA2" placeholder="Enter litres" oninput="calculateTotal('kerosene', 2)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="keroseneB2">B</label>
+                                    <input type="number" id="keroseneB2" placeholder="Enter litres" oninput="calculateTotal('kerosene', 2)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="keroseneTotal2">TOTAL</label>
+                                    <input type="number" id="keroseneTotal2" placeholder="Total litres" readonly>
+                                </div>
                             </div>
-                            <div class="textbox">
-                                <label for="keroseneTotal1">TOTAL</label>
-                                <input type="number" id="keroseneTotal1" placeholder="Total litres" readonly>
+                            <div>
+                                <h3>Pump 3</h3>
+                                <div class="textbox">
+                                    <label for="keroseneA3">A</label>
+                                    <input type="number" id="keroseneA3" placeholder="Enter litres" oninput="calculateTotal('kerosene', 3)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="keroseneB3">B</label>
+                                    <input type="number" id="keroseneB3" placeholder="Enter litres" oninput="calculateTotal('kerosene', 3)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="keroseneTotal3">TOTAL</label>
+                                    <input type="number" id="keroseneTotal3" placeholder="Total litres" readonly>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>Pump 4</h3>
+                                <div class="textbox">
+                                    <label for="keroseneA4">A</label>
+                                    <input type="number" id="keroseneA4" placeholder="Enter litres" oninput="calculateTotal('kerosene', 4)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="keroseneB4">B</label>
+                                    <input type="number" id="keroseneB4" placeholder="Enter litres" oninput="calculateTotal('kerosene', 4)">
+                                </div>
+                                <div class="textbox">
+                                    <label for="keroseneTotal4">TOTAL</label>
+                                    <input type="number" id="keroseneTotal4" placeholder="Total litres" readonly>
+                                </div>
                             </div>
                         </div>
-                        <!-- Repeat for Pumps 2, 3, and 4 -->
-                        <div>
-                            <h3>Pump 4</h3>
-                            <div class="textbox">
-                                <label for="keroseneA4">A</label>
-                                <input type="number" id="keroseneA4" placeholder="Enter litres" oninput="calculateTotal('kerosene', 4)">
-                            </div>
-                            <div class="textbox">
-                                <label for="keroseneB4">B</label>
-                                <input type="number" id="keroseneB4" placeholder="Enter litres" oninput="calculateTotal('kerosene', 4)">
-                            </div>
-                            <div class="textbox">
-                                <label for="keroseneTotal4">TOTAL</label>
-                                <input type="number" id="keroseneTotal4" placeholder="Total litres" readonly>
-                            </div>
+                        <div class="total-box">
+                            <h3>Total Kerosene</h3>
+                            <input type="number" id="totalKerosene" placeholder="Total Kerosene Sold" readonly>
                         </div>
-                    </div>
-                    <div class="total-box">
-                        <h3>Total Kerosene</h3>
-                        <input type="number" id="totalKerosene" placeholder="Total Kerosene Sold" readonly>
                     </div>
                 </div>
             </div>
