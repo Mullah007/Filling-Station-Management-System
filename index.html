@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filling Station Management - Data Entry</title>
+    <title>Filling Station Management System</title>
     <style>
         body {
             background-color: #f8f9fa;
             font-family: Arial, sans-serif;
             color: #333;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .container {
@@ -19,7 +23,13 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
+            display: none;
+        }
+
+        .login-container {
+            text-align: center;
+            display: block;
         }
 
         h1, h2, h3 {
@@ -45,7 +55,25 @@
             font-size: 14px;
         }
 
-        .section {
+        .btn {
+            width: 100px;
+            padding: 8px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .fuel-section {
+            display: flex;
+            flex-direction: column;
             margin-bottom: 30px;
         }
 
@@ -60,33 +88,31 @@
             padding: 0 10px;
         }
 
-        .fuel-section {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .btn {
-            width: 100px;
-            padding: 8px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
         .total-box {
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container login-container" id="login-container">
+        <h1>Filling Station Management System</h1>
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <form onsubmit="return validateLogin()">
+                <div class="textbox">
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Username" id="username" required>
+                </div>
+                <div class="textbox">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Password" id="password" required>
+                </div>
+                <input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="data-entry-container">
         <h1>Fuel Data Entry</h1>
 
         <div class="row" id="opening-closing">
@@ -106,7 +132,6 @@
                     <div class="fuel-type">
                         <h2>PETROL</h2>
                         <div class="fuel-section" id="petrol-pumps">
-                            <!-- Pumps for Petrol -->
                             <div>
                                 <h3>Pump 1</h3>
                                 <div class="textbox">
@@ -179,7 +204,6 @@
                     <div class="fuel-type">
                         <h2>DIESEL</h2>
                         <div class="fuel-section" id="diesel-pumps">
-                            <!-- Pumps for Diesel -->
                             <div>
                                 <h3>Pump 1</h3>
                                 <div class="textbox">
@@ -252,7 +276,6 @@
                     <div class="fuel-type">
                         <h2>KEROSENE</h2>
                         <div class="fuel-section" id="kerosene-pumps">
-                            <!-- Pumps for Kerosene -->
                             <div>
                                 <h3>Pump 1</h3>
                                 <div class="textbox">
@@ -331,6 +354,20 @@
     </div>
 
     <script>
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'mullah007' && password === '1776') {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('data-entry-container').style.display = 'block';
+                return false;
+            } else {
+                alert('Invalid credentials. Please try again.');
+                return false;
+            }
+        }
+
         function calculateTotal(fuelType, pumpNumber) {
             let a = parseFloat(document.getElementById(fuelType + 'A' + pumpNumber).value) || 0;
             let b = parseFloat(document.getElementById(fuelType + 'B' + pumpNumber).value) || 0;
